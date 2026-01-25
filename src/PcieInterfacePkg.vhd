@@ -535,6 +535,18 @@ package PcieInterfacePkg is
              oStatus         : Out   PcieStatusRecType ;
              iTag            : In    TagType := TLP_TAG_AUTO
   ) ;
+  
+  ------------------------------------------------------------
+  procedure PcieCfgSpaceRead (
+  -- do PCIe Configuration Space Read Cycle
+  ------------------------------------------------------------
+    signal   TransactionRec  : InOut AddressBusRecType ;
+             iAddr           : In    std_logic_vector ;
+             iCid            : In    std_logic_vector ;
+             oData           : Out   std_logic_vector ;
+             oStatus         : Out   PcieStatusRecType ;
+             iTag            : In    TagType := TLP_TAG_AUTO
+  ) ;
 
   ------------------------------------------------------------
   procedure PcieIoWrite (
@@ -1118,6 +1130,30 @@ package body PcieInterfacePkg is
     Set(TransactionRec.Params, PARAM_REQTAG,     iTag) ;
 
     Read(TransactionRec, iAddr, oData) ;
+
+    oStatus.Packet     := Get(TransactionRec.Params, PARAM_PKT_STATUS) ;
+    oStatus.Completion := Get(TransactionRec.Params, PARAM_CMPL_STATUS) ;
+    oStatus.Tag        := Get(TransactionRec.Params, PARAM_CMPL_RX_TAG) ;
+
+  end procedure PcieCfgSpaceRead ;
+  
+  ------------------------------------------------------------
+  procedure PcieCfgSpaceRead (
+  -- do PCIe Configuration Space Read Cycle
+  ------------------------------------------------------------
+    signal   TransactionRec  : InOut AddressBusRecType ;
+             iAddr           : In    std_logic_vector ;
+             iCid            : In    std_logic_vector ;
+             oData           : Out   std_logic_vector ;
+             oStatus         : Out   PcieStatusRecType ;
+             iTag            : In    TagType := TLP_TAG_AUTO
+  ) is
+  begin
+
+    Set(TransactionRec.Params, PARAM_TRANS_MODE, CFG_SPC_TRANS) ;
+    Set(TransactionRec.Params, PARAM_REQTAG,     iTag) ;
+
+    Read(TransactionRec, iCid & iAddr, oData) ;
 
     oStatus.Packet     := Get(TransactionRec.Params, PARAM_PKT_STATUS) ;
     oStatus.Completion := Get(TransactionRec.Params, PARAM_CMPL_STATUS) ;
