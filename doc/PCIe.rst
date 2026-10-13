@@ -96,7 +96,7 @@ and internal memory models. The last, :vhdlcode:`TbPcieSerial` is similar to the
 serialisation wrapper VHDL for single bit lanes. The diagram below shows the "classic" testbench structure
 (:vhdlcode:`TbPcie`), but all have a similar architecture.
 
-.. figure:: images/PCIe/Page07-1.png
+.. figure:: _static/images/PCIe/Page07-1.png
    :width: 702px
 
 
@@ -2362,7 +2362,7 @@ PCIe C model Architecture and Connection to VHDL
 Unlike other OSVVM VCs, the PCIe VC is a C based model that utilises the OSVVM co-simulation capabilities to integrate
 that C model into the OSVVM VHDL environment. The diagram below summarises the connection stack for the model
 
-.. figure:: images/PCIe/Page49-2.png
+.. figure:: _static/images/PCIe/Page49-2.png
    :width: 625px
 
 
@@ -2388,7 +2388,7 @@ The C model Architecture
 
 The internal architecture of the model is fairly straight forward. The diagram below shows its main features:
 
-.. figure:: images/PCIe/Page50-3.png
+.. figure:: _static/images/PCIe/Page50-3.png
    :width: 625px
 
 
