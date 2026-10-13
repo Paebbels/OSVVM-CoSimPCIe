@@ -3,21 +3,15 @@
 PCIe Verification Component
 ###########################
 
-.. _VC/PCIe/TerminologyUpstreamAndDownstream:
+.. admonition:: Terminology: Upstream and Downstream
+   :class: hint
 
-Terminology: Upstream and Downstream
-************************************
+   OSVVM PCIe VC and this document use the PCIe terminology, Upstream device and Downstream device. A PCIe Upstream device
+   is a PCIe component whose link is ‘upstream’, nearer the root complex (e.g. the RC itself), whilst a PCIe downstream
+   device is a PCIe component whose link is downstream, further away from the root complex (e.g. an endpoint). Further, a
+   downlink is the TX output link from an upstream device (and thus an RX link for the downstream device), and an upstream
+   link is the TX link from a downstream device (and an RX link of an upstream device).
 
-OSVVM PCIe VC and this document use the PCIe terminology, Upstream device and Downstream device. A PCIe Upstream device
-is a PCIe component whose link is ‘upstream’, nearer the root complex (e.g. the RC itself), whilst a PCIe downstream
-device is a PCIe component whose link is downstream, further away from the root complex (e.g. an endpoint). Further, a
-downlink is the TX output link from an upstream device (and thus an RX link for the downstream device), and an upstream
-link is the TX link from a downstream device (and an RX link of an upstream device).
-
-.. _VC/PCIe/Overview:
-
-Overview
-********
 
 The OSVVM PCIe Verification Component (VC) facilitates testing the interface and functionality of PCIe GEN1 and GEN2
 devices `[1] <https://drive.google.com/file/d/1CECftcznLwcKDADtjpHhW13-IBHTZVXx>`__ and is intended to form part of a
